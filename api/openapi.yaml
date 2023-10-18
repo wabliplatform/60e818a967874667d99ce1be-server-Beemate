@@ -1,0 +1,332 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: lampralexandros@gmail.com
+  description: This is a sample openApi document
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: https://wabli.netlify.app/
+  title: TempApi
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- description: symmetrical-sniffle-3
+  url: http://83.212.100.226:3003/v1
+security:
+- {}
+tags:
+- description: not yet ready
+  name: user
+- description: not yet ready
+  name: bee
+paths:
+  /user:
+    post:
+      operationId: createuser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+        description: data to be created
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+          description: successful operation
+      summary: Creates the data
+      tags:
+      - user
+      x-eov-operation-handler: controllers/UserController
+  /user/{userId}:
+    delete:
+      operationId: deleteuser
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: successful operation
+      summary: Delete the element
+      tags:
+      - user
+      x-eov-operation-handler: controllers/UserController
+    get:
+      operationId: getuser
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+          description: successful operation
+      summary: Get the element
+      tags:
+      - user
+      x-eov-operation-handler: controllers/UserController
+    put:
+      operationId: updateuser
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+        description: data to be updated
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+          description: successful operation
+      summary: Updates the element
+      tags:
+      - user
+      x-eov-operation-handler: controllers/UserController
+  /user/getAll:
+    get:
+      operationId: getAlluser
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/user'
+                type: array
+          description: successful operation
+      summary: Get all the data
+      tags:
+      - user
+      x-method-getAll: "true"
+      x-eov-operation-handler: controllers/UserController
+  /user/getByParams:
+    get:
+      operationId: getByParamsuser
+      parameters:
+      - description: the query based on which the search is performed
+        explode: true
+        in: query
+        name: filter
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/user'
+                type: array
+          description: successful operation
+      summary: Get all the data based on user query
+      tags:
+      - user
+      x-method-get-by-params: "true"
+      x-eov-operation-handler: controllers/UserController
+  /bee:
+    post:
+      operationId: createbee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bee'
+        description: data to be created
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bee'
+          description: successful operation
+      summary: Creates the data
+      tags:
+      - bee
+      x-eov-operation-handler: controllers/BeeController
+  /bee/{beeId}:
+    delete:
+      operationId: deletebee
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: beeId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: successful operation
+      summary: Delete the element
+      tags:
+      - bee
+      x-eov-operation-handler: controllers/BeeController
+    get:
+      operationId: getbee
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: beeId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bee'
+          description: successful operation
+      summary: Get the element
+      tags:
+      - bee
+      x-eov-operation-handler: controllers/BeeController
+    put:
+      operationId: updatebee
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: beeId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bee'
+        description: data to be updated
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bee'
+          description: successful operation
+      summary: Updates the element
+      tags:
+      - bee
+      x-eov-operation-handler: controllers/BeeController
+  /bee/getAll:
+    get:
+      operationId: getAllbee
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/bee'
+                type: array
+          description: successful operation
+      summary: Get all the data
+      tags:
+      - bee
+      x-method-getAll: "true"
+      x-eov-operation-handler: controllers/BeeController
+  /bee/getByParams:
+    get:
+      operationId: getByParamsbee
+      parameters:
+      - description: the query based on which the search is performed
+        explode: true
+        in: query
+        name: filter
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/bee'
+                type: array
+          description: successful operation
+      summary: Get all the data based on user query
+      tags:
+      - bee
+      x-method-get-by-params: "true"
+      x-eov-operation-handler: controllers/BeeController
+components:
+  schemas:
+    user:
+      example:
+        userImagesUploaded: 1.4658129805029452
+        userLevel: 0.8008281904610115
+        userChallenges: 6.027456183070403
+        userAudioFilesUploaded: 5.962133916683182
+        _id: _id
+        userName: userName
+      properties:
+        _id:
+          type: string
+        userName:
+          type: string
+        userLevel:
+          format: double
+          type: number
+        userChallenges:
+          format: double
+          type: number
+        userImagesUploaded:
+          format: double
+          type: number
+        userAudioFilesUploaded:
+          format: double
+          type: number
+      required:
+      - userAudioFilesUploaded
+      - userChallenges
+      - userImagesUploaded
+      - userLevel
+      - userName
+      type: object
+    bee:
+      example:
+        _id: _id
+      properties:
+        _id:
+          type: string
+      type: object
